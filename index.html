@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Secret of My Heart ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:'Cairo',sans-serif;color:white;
+ background:radial-gradient(circle at top,#59275f,#190d35 55%,#08091d);
+ min-height:100vh;overflow-x:hidden;text-align:center
+}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.star{position:absolute;background:white;border-radius:50%;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{to{opacity:.15;transform:scale(.5)}}
+.screen{display:none;position:relative;z-index:2;min-height:100vh;padding:65px 22px 35px;align-items:center;justify-content:center;flex-direction:column}
+.screen.active{display:flex}
+h1{font-size:30px;margin:12px 0;color:#ffe0f1}
+h2{font-size:23px;color:#ffd3ed}
+p{line-height:2;font-size:16px;color:#f5e8f5}
+.glow{text-shadow:0 0 20px #ff71c9,0 0 40px #ff71c9}
+.card{
+ width:100%;max-width:430px;padding:27px 22px;
+ border:1px solid #ffffff30;border-radius:25px;
+ background:linear-gradient(145deg,#ffffff15,#ffffff06);
+ box-shadow:0 0 35px #e94bb52b;backdrop-filter:blur(12px)
+}
+button{
+ border:0;border-radius:30px;padding:13px 25px;
+ font-family:inherit;font-size:16px;font-weight:700;
+ color:#421438;background:linear-gradient(100deg,#ffd2e9,#f6a6ce,#ffe4ac);
+ margin:9px;cursor:pointer;box-shadow:0 0 20px #ff80c5aa
+}
+button:active{transform:scale(.95)}
+input{
+ width:100%;padding:14px;border-radius:15px;
+ border:1px solid #ffb9e1;background:#ffffff12;
+ color:white;text-align:center;font-size:18px;font-family:inherit;
+ outline:none;margin:12px 0
+}
+input::placeholder{color:#ffffff90}
+.gift{font-size:75px;animation:float 2s infinite ease-in-out}
+@keyframes float{50%{transform:translateY(-12px) rotate(5deg)}}
+.heart{font-size:100px;animation:beat 1s infinite}
+@keyframes beat{50%{transform:scale(1.2)}}
+.small{font-size:13px;color:#e7c6e0}
+#message{white-space:pre-line;font-size:17px;line-height:2.2}
+.floating{position:fixed;bottom:-30px;animation:rise 7s linear forwards;pointer-events:none;z-index:5}
+@keyframes rise{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<!-- Your personal song -->
+<audio id="myMusic" src="music.mp3" loop preload="auto"></audio>
+
+<div class="screen active" id="s1">
+ <div class="gift">💌</div>
+ <h1 class="glow">THE SECRET OF MY HEART</h1>
+ <h2>إلى رُبى ❤️</h2>
+ <div class="card">
+  <p>أهلاً يا صاحبة أجمل قلب...</p>
+  <p>وصلِك صندوق صغير، بس جوّاته أسرار كبيرة.</p>
+  <p>في 3 مراحل لازم تجتازيهن لتكتشفي شو مخبّيلِك حدا بيحبّك كتير...</p>
+  <button onclick="start()">افتحي المغامرة ✨</button>
+ </div>
+ <p class="small">A little adventure made with love ❤️</p>
+</div>
+
+<div class="screen" id="s2">
+ <div class="gift">🔐</div>
+ <h1>المرحلة الأولى</h1>
+ <div class="card">
+  <h2>لغز البداية</h2>
+  <p>في تاريخ معيّن صار عندي سبب جديد للابتسامة...</p>
+  <p>بأي يوم من الشهر بلّشت حكايتنا؟</p>
+  <input id="a1" placeholder="اكتبي رقم اليوم">
+  <button onclick="check(1)">افتحي القفل ❤️</button>
+  <p class="small" id="e1"></p>
+ </div>
+</div>
+
+<div class="screen" id="s3">
+ <div class="gift">🎁</div>
+ <h1>أول سر انكشف!</h1>
+ <div class="card">
+  <h2>25 أبريل 2025 ❤️</h2>
+  <p>هيدا مش مجرد تاريخ...</p>
+  <p>هيدا اليوم اللي بلّشت فيه حكاية صارت من أجمل أجزاء حياتي.</p>
+  <p>بس بعد في أسرار تانية ناطرتِك!</p>
+  <button onclick="show('s4')">على اللغز التاني 💗</button>
+ </div>
+</div>
+
+<div class="screen" id="s4">
+ <div class="gift">💎</div>
+ <h1>المرحلة الثانية</h1>
+ <div class="card">
+  <h2>مين هي بطلة هالحكاية؟</h2>
+  <p>، واسمها لحالو بيخلّي قلبي يبتسم...</p>
+  <input id="a2" placeholder="اكتبي اسمها">
+  <button onclick="check(2)">جرّبي حظّك 💕</button>
+  <p class="small" id="e2"></p>
+ </div>
+</div>
+
+<div class="screen" id="s5">
+ <div class="gift">🌹</div>
+ <h1>عرفتي السر التاني!</h1>
+ <div class="card">
+  <h2>رُبى... إنتِ الحكاية ❤️</h2>
+  <p>مش مهم قديش في أسماء حلوة بالعالم...</p>
+  <p>بالنسبة إلي، في اسم واحد إلو مكان مختلف بقلبي.</p>
+  <p>وبعد في مفاجأة أخيرة...</p>
+  <button onclick="show('s6')">اكتشفي السر الأخير ✨</button>
+ </div>
+</div>
+
+<div class="screen" id="s6">
+ <div class="gift">🌙</div>
+ <h1>المرحلة الأخيرة</h1>
+ <div class="card">
+  <h2>آخر مفتاح للصندوق</h2>
+  <p>تاريخ بدايتنا كان 25-04-2025.</p>
+  <p>شو رقم الشهر اللي جمعنا؟</p>
+  <input id="a3" placeholder="اكتبي رقم الشهر">
+  <button onclick="check(3)">افتحي آخر قفل 🔑</button>
+  <p class="small" id="e3"></p>
+ </div>
+</div>
+
+<div class="screen" id="s7">
+ <div class="heart">❤️</div>
+ <h1 class="glow">THE FINAL SURPRISE</h1>
+ <div class="card">
+  <h2>يا رُبى...</h2>
+  <p>وصلتي لنهاية اللعبة، بس بالنسبة إلي هيدي مش النهاية...</p>
+  <p>هيدي بداية لأحلى أحلام بتمنّى نعيشها سوا.</p>
+  <button onclick="show('s8')">افتحي رسالتي إلك 💌</button>
+ </div>
+</div>
+
+<div class="screen" id="s8">
+ <div class="heart glow">💗</div>
+ <h1 class="glow">إلى رُبى</h1>
+ <div class="card">
+  <div id="message"></div>
+  <p style="color:#ffc2e6;font-weight:bold;font-size:20px">
+   بحبّك يا رُبى ❤️
+  </p>
+  <button onclick="celebrate()">اضغطي هون يا أميرتي ✨</button>
+  <p class="small" id="ending"></p>
+ </div>
+</div>
+
+<script>
+const stars=document.getElementById('stars');
+
+for(let i=0;i<90;i++){
+ let s=document.createElement('i');
+ s.className='star';
+ s.style.left=Math.random()*100+'%';
+ s.style.top=Math.random()*100+'%';
+ s.style.width=s.style.height=(Math.random()*3+1)+'px';
+ s.style.animationDelay=Math.random()*3+'s';
+ stars.appendChild(s);
+}
+
+let musicStarted=false;
+
+function start(){
+ const song=document.getElementById('myMusic');
+
+ if(!musicStarted){
+  song.volume=0.7;
+  song.play().then(()=>{
+   musicStarted=true;
+  }).catch(()=>{
+   alert('إذا ما اشتغلت الموسيقى، تأكدي من وجود music.mp3 بنفس مجلد الصفحة ❤️');
+  });
+ }
+ show('s2');
+}
+
+function show(id){
+ document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ if(id==='s8')typeMessage();
+}
+
+function check(n){
+ let value=document.getElementById('a'+n).value.trim().toLowerCase();
+
+ let answers={
+  1:['25'],
+  2:['رُبى','ربى','ruba','rouba'],
+  3:['4','04']
+ };
+
+ if(answers[n].includes(value)){
+  if(n===1)show('s3');
+  if(n===2)show('s5');
+  if(n===3)show('s7');
+ }else{
+  document.getElementById('e'+n).textContent=
+  'مش هيدا الجواب يا قلبي 😘 جرّبي مرة تانية!';
+ }
+}
+
+const words=`رُبى حبيبتي...
+
+بعرف إنو هاللعبة صغيرة، بس كنت بدي أعملك شي يكون إلك وحدك، شي تفتحيه وتبتسمي وتعرفي قديش إنتِ غالية عندي.
+
+من25/04/2025 بلّشت حكايتنا، ومن وقتها صار عندي شخص بتمنّى يكون معي بكل تفاصيل أيامي.
+
+بحب ضحكتك، بحب وجودك، بحب تفاصيلك الصغيرة، وحتى الأشياء اللي يمكن إنتِ ما بتنتبهي إلها.
+
+ما بوعدك إنو كل الأيام رح تكون مثالية، بس بوعدك إنو رح ضل حاول خليكي مبسوطة، ورح ضل اختارك بكل يوم.
+
+بتمنّى يجي يوم نفتح فيه هالصفحة سوا، ونضحك على كل هالتفاصيل، ونكون حققنا أحلامنا.
+
+إنتِ مش مجرد شخص بحياتي...
+إنتِ جزء من المستقبل اللي بتمنّاه.
+
+بحبك يا رُبى، واليوم وبكرا وكل الأيام الجاية. ❤️`;
+
+let index=0;
+let started=false;
+
+function typeMessage(){
+ if(started)return;
+ started=true;
+
+ let box=document.getElementById('message');
+
+ function next(){
+  if(index<words.length){
+   box.textContent+=words[index++];
+   setTimeout(next,35);
+  }
+ }
+ next();
+}
+
+function celebrate(){
+ for(let i=0;i<45;i++){
+  let h=document.createElement('div');
+  h.className='floating';
+  h.textContent=['❤️','💗','💖','✨','💕'][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+'%';
+  h.style.fontSize=(20+Math.random()*25)+'px';
+  h.style.animationDuration=(3+Math.random()*5)+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),8000);
+ }
+
+ document.getElementById('ending').textContent=
+ 'إنتِ أحلى صدفة وأجمل اختيار بحياتي ❤️';
+}
+</script>
+
+</body>
+</html>
